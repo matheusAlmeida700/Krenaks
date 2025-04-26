@@ -10,7 +10,7 @@ const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioRef.current = new Audio("/assets/songs/KrenakMaxakaliPatax.mp3");
+    audioRef.current = new Audio("../../assets/songs/KrenakMaxakaliPatax.mp3");
     audioRef.current.loop = true;
     audioRef.current.volume = volume;
 
