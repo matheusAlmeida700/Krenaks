@@ -1,34 +1,19 @@
-
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 
 const MusicPlayer = () => {
   const [volume, setVolume] = useState(0.5);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true); // Começar mutado
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Create audio element
-    audioRef.current = new Audio('/background-music.mp3');
+    audioRef.current = new Audio("/assets/songs/KrenakMaxakaliPatax.mp3");
     audioRef.current.loop = true;
     audioRef.current.volume = volume;
 
-    // Play audio when component mounts
-    const playAudio = async () => {
-      try {
-        if (audioRef.current) {
-          await audioRef.current.play();
-        }
-      } catch (error) {
-        console.error('Error playing audio:', error);
-      }
-    };
-
-    playAudio();
-
-    // Cleanup
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -43,8 +28,19 @@ const MusicPlayer = () => {
     }
   }, [volume, isMuted]);
 
-  const toggleMute = () => {
-    setIsMuted(!isMuted);
+  const toggleMute = async () => {
+    if (!isPlaying && audioRef.current) {
+      try {
+        await audioRef.current.play();
+        setIsPlaying(true);
+      } catch (error) {
+        console.error("Error playing audio:", error);
+        return;
+      }
+    }
+
+    // Agora pode alternar mute
+    setIsMuted((prev) => !prev);
   };
 
   return (
@@ -62,10 +58,10 @@ const MusicPlayer = () => {
         )}
       </Button>
       <div className="w-24">
-        <Slider 
-          value={[isMuted ? 0 : volume * 100]} 
+        <Slider
+          value={[isMuted ? 0 : volume * 100]}
           onValueChange={(value) => setVolume(value[0] / 100)}
-          max={100} 
+          max={100}
           step={1}
         />
       </div>
