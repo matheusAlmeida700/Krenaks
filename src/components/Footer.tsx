@@ -1,0 +1,103 @@
+
+import { ArrowUp } from 'lucide-react';
+
+const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <footer className="bg-forest-800 dark:bg-forest-950 text-white">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
+          {/* About */}
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-forest-100">Alma Verde Ancestral</h3>
+            <p className="text-forest-300 mb-4">
+              Um projeto dedicado à valorização dos povos originários do Brasil, 
+              suas culturas, línguas, contribuições e lutas atuais.
+            </p>
+          </div>
+          
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-forest-100">Navegação Rápida</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#home" className="text-forest-300 hover:text-forest-100 transition-colors">Início</a>
+              </li>
+              <li>
+                <a href="#region" className="text-forest-300 hover:text-forest-100 transition-colors">Região Geográfica</a>
+              </li>
+              <li>
+                <a href="#languages" className="text-forest-300 hover:text-forest-100 transition-colors">Línguas Indígenas</a>
+              </li>
+              <li>
+                <a href="#history" className="text-forest-300 hover:text-forest-100 transition-colors">História e Cultura</a>
+              </li>
+              <li>
+                <a href="#contributions" className="text-forest-300 hover:text-forest-100 transition-colors">Contribuições</a>
+              </li>
+              <li>
+                <a href="#rights" className="text-forest-300 hover:text-forest-100 transition-colors">Direitos e Desafios</a>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Resources */}
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-forest-100">Recursos Adicionais</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="https://pib.socioambiental.org/" target="_blank" rel="noopener noreferrer" className="text-forest-300 hover:text-forest-100 transition-colors">
+                  Povos Indígenas no Brasil (ISA)
+                </a>
+              </li>
+              <li>
+                <a href="https://www.funai.gov.br/" target="_blank" rel="noopener noreferrer" className="text-forest-300 hover:text-forest-100 transition-colors">
+                  FUNAI
+                </a>
+              </li>
+              <li>
+                <a href="https://apiboficial.org/" target="_blank" rel="noopener noreferrer" className="text-forest-300 hover:text-forest-100 transition-colors">
+                  APIB
+                </a>
+              </li>
+              <li>
+                <a href="https://www.museudoindio.gov.br/" target="_blank" rel="noopener noreferrer" className="text-forest-300 hover:text-forest-100 transition-colors">
+                  Museu do Índio
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        {/* Scroll to top */}
+        <div className="flex justify-center mb-8">
+          <button
+            onClick={scrollToTop}
+            className="p-3 rounded-full bg-forest-700 hover:bg-forest-600 transition-colors focus:outline-none focus:ring-2 focus:ring-forest-500"
+            aria-label="Voltar ao topo"
+          >
+            <ArrowUp className="h-6 w-6" />
+          </button>
+        </div>
+        
+        {/* Copyright */}
+        <div className="border-t border-forest-700 pt-6 text-center">
+          <p className="text-forest-400">
+            &copy; {new Date().getFullYear()} Alma Verde Ancestral. Todos os direitos reservados.
+          </p>
+          <p className="text-forest-500 text-sm mt-2">
+            Desenvolvido como um tributo à rica herança dos povos originários do Brasil.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
