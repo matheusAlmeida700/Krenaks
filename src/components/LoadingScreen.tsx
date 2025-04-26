@@ -1,7 +1,19 @@
 
-import { Loader } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Loader, LogIn } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ onEnter }: { onEnter?: () => void }) => {
+  const [showEnterButton, setShowEnterButton] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowEnterButton(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="fixed inset-0 bg-gradient-to-br from-forest-900 to-forest-950 z-50 flex items-center justify-center">
       <div className="relative">
@@ -17,13 +29,24 @@ const LoadingScreen = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-        <p className="text-forest-400/80 text-lg font-medium animate-pulse">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+        <p className="text-forest-400/80 text-lg font-medium animate-pulse mb-4">
           Carregando...
         </p>
+        
+        {showEnterButton && (
+          <Button 
+            onClick={onEnter} 
+            className="animate-fade-in flex items-center gap-2"
+          >
+            <LogIn className="h-5 w-5" />
+            Entrar
+          </Button>
+        )}
       </div>
     </div>
   );
 };
 
 export default LoadingScreen;
+

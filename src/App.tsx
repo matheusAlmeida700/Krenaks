@@ -15,6 +15,7 @@ const queryClient = new QueryClient();
 const App = () => {
   const [theme, setTheme] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [canEnter, setCanEnter] = useState(false);
 
   useEffect(() => {
     // Check local storage for saved theme
@@ -44,6 +45,10 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleEnter = () => {
+    setCanEnter(true);
+  };
+
   // Only render app when theme is determined
   if (theme === null) {
     return <div className="min-h-screen bg-white dark:bg-forest-950"></div>;
@@ -52,7 +57,9 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        {isLoading && <LoadingScreen />}
+        {(isLoading || !canEnter) && (
+          <LoadingScreen onEnter={handleEnter} />
+        )}
         <MusicPlayer />
         <Toaster />
         <Sonner />
@@ -69,3 +76,4 @@ const App = () => {
 };
 
 export default App;
+
