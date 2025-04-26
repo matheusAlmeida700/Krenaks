@@ -46,7 +46,15 @@ const App = () => {
   }, []);
 
   const handleEnter = () => {
-    setCanEnter(true);
+    // Adiciona classe de fade-out na tela de carregamento
+    const loadingScreen = document.querySelector('.loading-screen');
+    if (loadingScreen) {
+      loadingScreen.classList.add('animate-fade-out');
+      // Espera a animação terminar antes de remover
+      setTimeout(() => {
+        setCanEnter(true);
+      }, 500);
+    }
   };
 
   // Only render app when theme is determined
@@ -60,20 +68,20 @@ const App = () => {
         {(isLoading || !canEnter) && (
           <LoadingScreen onEnter={handleEnter} />
         )}
-        <MusicPlayer />
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <div className={`${!isLoading && canEnter ? 'animate-fade-in' : 'opacity-0'}`}>
+          <MusicPlayer />
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );
 };
 
 export default App;
-

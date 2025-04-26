@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Loader, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,15 +14,12 @@ const LoadingScreen = ({ onEnter }: { onEnter?: () => void }) => {
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-forest-900 to-forest-950 z-50 flex items-center justify-center">
+    <div className="loading-screen fixed inset-0 bg-gradient-to-br from-forest-900 to-forest-950 z-50 flex items-center justify-center transition-opacity duration-500">
       <div className="relative">
-        {/* Outer ring animation */}
         <div className="absolute inset-0 rounded-full border-4 border-forest-400/30 animate-[spin_3s_linear_infinite]" />
         
-        {/* Inner ring animation */}
         <div className="absolute inset-2 rounded-full border-4 border-t-forest-400 border-r-forest-400/50 border-b-forest-400/30 border-l-forest-400/10 animate-[spin_2s_linear_infinite]" />
         
-        {/* Center content */}
         <div className="relative p-8">
           <Loader className="w-12 h-12 text-forest-400 animate-[spin_1s_linear_infinite]" />
         </div>
@@ -37,7 +33,7 @@ const LoadingScreen = ({ onEnter }: { onEnter?: () => void }) => {
         {showEnterButton && (
           <Button 
             onClick={onEnter} 
-            className="animate-fade-in flex items-center gap-2"
+            className="animate-fade-in flex items-center gap-2 hover:scale-105 transition-transform"
           >
             <LogIn className="h-5 w-5" />
             Entrar
@@ -49,4 +45,3 @@ const LoadingScreen = ({ onEnter }: { onEnter?: () => void }) => {
 };
 
 export default LoadingScreen;
-
