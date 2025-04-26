@@ -1,5 +1,6 @@
+
 import { useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, Languages } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Languages as LanguagesIcon } from 'lucide-react';
 
 interface LanguageInfo {
   name: string;
@@ -73,7 +74,7 @@ const Languages = () => {
       
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center gap-3 mb-12">
-          <Languages className="h-8 w-8 text-forest-600 dark:text-forest-400" />
+          <LanguagesIcon className="h-8 w-8 text-forest-600 dark:text-forest-400" />
           <h2 className="section-title">Línguas Indígenas</h2>
         </div>
         
