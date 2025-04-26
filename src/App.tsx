@@ -7,11 +7,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import LoadingScreen from "./components/LoadingScreen";
+import MusicPlayer from "./components/MusicPlayer";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [theme, setTheme] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Check local storage for saved theme
@@ -32,6 +35,13 @@ const App = () => {
     } else {
       document.documentElement.classList.remove('dark');
     }
+
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Only render app when theme is determined
@@ -42,6 +52,8 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        {isLoading && <LoadingScreen />}
+        <MusicPlayer />
         <Toaster />
         <Sonner />
         <BrowserRouter>
