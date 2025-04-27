@@ -57,7 +57,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://www.funai.gov.br/" target="_blank" rel="noopener noreferrer" className="text-forest-300 hover:text-forest-100 transition-colors">
+                <a href="https://www.gov.br/funai/pt-br" target="_blank" rel="noopener noreferrer" className="text-forest-300 hover:text-forest-100 transition-colors">
                   FUNAI
                 </a>
               </li>
@@ -67,7 +67,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://www.museudoindio.gov.br/" target="_blank" rel="noopener noreferrer" className="text-forest-300 hover:text-forest-100 transition-colors">
+                <a href="https://www.gov.br/museudoindio/pt-br" target="_blank" rel="noopener noreferrer" className="text-forest-300 hover:text-forest-100 transition-colors">
                   Museu do Índio
                 </a>
               </li>

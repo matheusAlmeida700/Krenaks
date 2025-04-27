@@ -49,8 +49,7 @@ const Contributions = () => {
       icon: "M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"
     }
   ];
-  
-  // Animation on scroll + 3D effect
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -59,12 +58,13 @@ const Contributions = () => {
         }
       });
     }, { threshold: 0.1 });
-  
+
     const contributionItems = document.querySelectorAll<HTMLDivElement>('.contribution-item');
-  
+
     contributionItems.forEach(item => {
       item.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'relative', 'overflow-hidden');
-  
+      observer.observe(item);
+
       const highlight = document.createElement('div');
       highlight.style.position = 'absolute';
       highlight.style.top = '0';
@@ -76,22 +76,22 @@ const Contributions = () => {
       highlight.style.opacity = '0';
       highlight.style.transition = 'opacity 0.3s ease, background-position 0.1s ease';
       item.appendChild(highlight);
-  
+
       let currentX = 0;
       let currentY = 0;
       let targetX = 0;
       let targetY = 0;
       let animationFrameId: number;
-  
+
       const maxRotation = 15;
-  
+
       const updateTransform = () => {
         currentX += (targetX - currentX) * 0.1;
         currentY += (targetY - currentY) * 0.1;
         item.style.transform = `rotateX(${-currentY}deg) rotateY(${currentX}deg)`;
         animationFrameId = requestAnimationFrame(updateTransform);
       };
-  
+
       const handleMouseMove = (e: MouseEvent) => {
         const rect = item.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -102,55 +102,49 @@ const Contributions = () => {
         const rotateY = ((x - centerX) / centerX) * maxRotation;
         targetX = rotateY;
         targetY = rotateX;
-  
-        // Atualizar o brilho
+
         const posX = (x / rect.width) * 100;
         const posY = (y / rect.height) * 100;
         highlight.style.background = `radial-gradient(circle at ${posX}% ${posY}%, rgba(255,255,255,0.2) 0%, transparent 60%)`;
         highlight.style.opacity = '1';
       };
-  
+
       const handleMouseLeave = () => {
         targetX = 0;
         targetY = 0;
         highlight.style.opacity = '0';
       };
-  
+
       item.addEventListener('mousemove', handleMouseMove);
       item.addEventListener('mouseleave', handleMouseLeave);
-  
-      updateTransform(); // inicia animação contínua
-  
+
+      updateTransform();
+
       item.style.transition = 'transform 0.2s ease';
-  
-      // Cleanup
+
       item.addEventListener('mouseleave', () => {
         cancelAnimationFrame(animationFrameId);
       });
     });
-  
+
     return () => {
       contributionItems.forEach(item => {
         observer.unobserve(item);
       });
     };
   }, []);
-  
-
-  
 
   return (
     <section id="contributions" className="py-24 bg-forest-50 dark:bg-forest-900 relative overflow-hidden">
       <div className="absolute inset-0 bg-indigenous-pattern opacity-10"></div>
-      
+
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center gap-3 mb-12">
           <BookOpen className="h-8 w-8 text-forest-600 dark:text-forest-400" />
           <h2 className="section-title">Importância e Contribuição dos Krenak</h2>
         </div>
-        
+
         <div className="max-w-5xl mx-auto">
-          {/* Introduction */}
           <div className="glass-card p-6 mb-12">
             <p className="text-forest-700 dark:text-forest-300 leading-relaxed">
               O povo Krenak, habitante das margens do Rio Doce, construiu uma rica história de resistência, saberes e espiritualidade.
@@ -158,8 +152,7 @@ const Contributions = () => {
               são um exemplo inspirador para todo o Brasil.
             </p>
           </div>
-          
-          {/* Contributions Grid */}
+
           <div ref={contributionsRef} className="grid md:grid-cols-2 gap-6">
             {contributions.map((item, index) => (
               <div key={index} className="contribution-item glass-card p-6 transition-transform duration-300 ease-out hover:scale-105">
@@ -169,31 +162,21 @@ const Contributions = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                     </svg>
                   </div>
-                  
+
                   <div>
                     <div className="mb-2">
                       <span className="inline-block px-3 py-1 rounded-full bg-forest-100 dark:bg-forest-800 text-forest-700 dark:text-forest-300 text-sm font-medium">
                         {item.area}
                       </span>
                     </div>
-                    <h3 className="text-xl font-semibold text-forest-800 dark:text-forest-200 mb-2">{item.title}</h3>
-                    <p className="text-forest-600 dark:text-forest-400">{item.description}</p>
+                    <h3 className="text-xl font-semibold text-forest-900 dark:text-forest-100">{item.title}</h3>
+                    <p className="text-forest-700 dark:text-forest-300 mt-2">{item.description}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Additional Info */}
-          <div className="mt-12 indigenous-border p-6">
-            <h3 className="text-center text-xl font-semibold text-forest-800 dark:text-forest-200 mb-4">
-              Reconhecimento e Direitos Indígenas
-            </h3>
-            <p className="text-center text-forest-600 dark:text-forest-400">
-              A história dos Krenak é também a história da luta pela demarcação de terras, pelo respeito à cultura e pela sobrevivência frente aos desafios modernos.
-              Honrar os saberes indígenas é construir um futuro mais justo e plural.
-            </p>
-          </div>
         </div>
       </div>
     </section>
