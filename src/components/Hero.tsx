@@ -43,9 +43,9 @@ const Hero = () => {
       >
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-forest-800 dark:text-forest-100">
-            <span className="inline-block animate-fade-in">Alma</span>{" "}
-            <span className="inline-block animate-fade-in" style={{animationDelay: "0.3s"}}>Verde</span>{" "}
-            <span className="inline-block animate-fade-in" style={{animationDelay: "0.6s"}}>Ancestral</span>
+            <span className="inline-block animate-fade-in">Krenak: </span>{" "}
+            <span className="inline-block animate-fade-in" style={{animationDelay: "0.3s"}}>Vozes da Memória </span>{" "}
+            <span className="inline-block animate-fade-in" style={{animationDelay: "0.6s"}}>e do Presente</span>
           </h1>
           
           <div 
@@ -53,8 +53,7 @@ const Hero = () => {
             style={{animationDelay: "0.9s"}}
           >
             <p className="text-xl md:text-2xl text-forest-700 dark:text-forest-300 max-w-2xl mx-auto">
-              Explore a rica herança dos povos originários do Brasil, 
-              suas contribuições, culturas e os desafios contemporâneos.
+            Explore a rica herança dos povos originários do Brasil, suas contribuições e culturas, através da história viva do povo Krenak. Conheça suas origens, a profunda ligação com seu território e as vibrantes manifestações culturais que moldam sua identidade.
             </p>
           </div>
           

@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-forest-100">Alma Verde Ancestral</h3>
+            <h3 className="text-xl font-bold mb-4 text-forest-100">A Força Ancestral Krenak</h3>
             <p className="text-forest-300 mb-4">
               Um projeto dedicado à valorização dos povos originários do Brasil, 
               suas culturas, línguas, contribuições e lutas atuais.
@@ -73,6 +73,41 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-forest-100">Desenvolvedores</h3>
+            <ul className="space-y-2">
+              <li>
+                <p className='text-forest-300'>Isabelly Chirai</p>
+              </li>
+              <li>
+                <p className='text-forest-300'>Gabriel Luís de Lima Ramos</p>
+              </li>
+              <li>
+                <p className='text-forest-300'>Marco Antônio da Costa Silva</p>
+              </li>
+              <li>
+                <p className='text-forest-300'>Matheus Almeida</p>
+              </li>
+              <li>
+                <p className='text-forest-300'>Murilo Moreno Figuerôa Vieira</p>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-forest-100">Professora Orientadora</h3>
+            <ul className="space-y-2">
+              <li>
+                <p className='text-forest-300'>Tatiane</p>
+              </li>
+            
+            </ul>
+          </div>
+
+          <div>
+           <img className='w-4/5 mt-10' src="https://logodownload.org/wp-content/uploads/2016/10/sesi-logo.png" alt="" />
+          </div>
         </div>
         
         {/* Scroll to top */}
@@ -89,7 +124,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-forest-700 pt-6 text-center">
           <p className="text-forest-400">
-            &copy; {new Date().getFullYear()} Alma Verde Ancestral. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} A Força Ancestral Krenak. Todos os direitos reservados.
           </p>
           <p className="text-forest-500 text-sm mt-2">
             Desenvolvido como um tributo à rica herança dos povos originários do Brasil.

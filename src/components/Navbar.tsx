@@ -60,7 +60,7 @@ const Navbar = () => {
                 <circle cx="12" cy="5" r="3"></circle>
               </svg>
             </div>
-            <span className="text-xl font-bold text-forest-800 dark:text-forest-200">Alma Verde Ancestral</span>
+            <span className="text-xl font-bold text-forest-800 dark:text-forest-200">A Força Ancestral Krenak</span>
           </a>
 
           {/* Desktop Navigation */}

@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { BookOpen } from 'lucide-react';
 
@@ -14,65 +13,112 @@ const Contributions = () => {
 
   const contributions: Contribution[] = [
     {
-      area: "Medicina",
-      title: "Plantas Medicinais",
-      description: "O conhecimento indígena sobre plantas medicinais contribuiu para o desenvolvimento de diversos medicamentos modernos. Por exemplo, o curare, usado por diversos povos amazônicos em suas flechas, levou ao desenvolvimento de relaxantes musculares usados em cirurgias.",
+      area: "Tecnologia Sustentável",
+      title: "Manejo Inteligente de Recursos Naturais",
+      description: "O povo Krenak domina técnicas ancestrais de uso sustentável da água, do solo e das florestas. Suas práticas inspiram hoje soluções tecnológicas baseadas na biomimética e na permacultura, essenciais para um futuro mais equilibrado.",
+      icon: "M12 2a10 10 0 00-7.07 17.07 10 10 0 0014.14 0A10 10 0 0012 2zm0 18a8 8 0 110-16 8 8 0 010 16z"
+    },
+    {
+      area: "Medicina Tradicional",
+      title: "Conhecimento de Plantas e Curandeirismo",
+      description: "Os saberes medicinais Krenak, preservados através de gerações, oferecem alternativas naturais para tratamentos e inspiram a ciência moderna no desenvolvimento de fitoterápicos e pesquisas sobre biodiversidade.",
       icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
     },
     {
-      area: "Agricultura",
-      title: "Técnicas Agrícolas Sustentáveis",
-      description: "Técnicas como o cultivo consorciado (plantar diferentes espécies juntas), manejo de áreas de floresta para agricultura (como os sistemas agroflorestais) e conhecimentos sobre a fertilidade do solo influenciaram a agricultura moderna e práticas agroecológicas.",
-      icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      area: "Alimentação e Agricultura",
+      title: "Cultivo de Alimentos Nativos",
+      description: "Os Krenak cultivam e preservam espécies nativas como o milho crioulo e a mandioca, práticas que hoje são pilares dos movimentos de soberania alimentar, agroecologia e valorização da biodiversidade brasileira.",
+      icon: "M5 3v4M3 5h4M6 17v4m-2-2h4m12-6l2 2-2 2M6 8l2-2 2 2M18 8l2-2-2-2M6 16l2 2 2-2"
     },
     {
-      area: "Alimentação",
-      title: "Diversidade Alimentar",
-      description: "Os povos indígenas domesticaram e desenvolveram variedades de alimentos fundamentais para a dieta global, como mandioca, milho, batata-doce, amendoim, abacaxi e diversas frutas. Suas técnicas de processamento de alimentos também foram fundamentais.",
-      icon: "M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"
+      area: "Preservação Ambiental",
+      title: "Visão Holística da Natureza",
+      description: "Para os Krenak, rios, florestas e montanhas são seres vivos. Essa cosmovisão inspira projetos de preservação ambiental, mudanças nas políticas públicas e a construção de uma ética ecológica mais profunda no Brasil moderno.",
+      icon: "M3 3h18v18H3V3zm9 16a7 7 0 100-14 7 7 0 000 14z"
     },
     {
-      area: "Ecologia",
-      title: "Conservação Ambiental",
-      description: "Os territórios indígenas são reconhecidos como áreas fundamentais para a conservação da biodiversidade. Estudos comprovam que áreas habitadas e geridas por povos tradicionais apresentam menores taxas de desmatamento e maior biodiversidade.",
-      icon: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+      area: "Direitos Humanos",
+      title: "Inspiradores da Luta por Justiça e Território",
+      description: "A resistência histórica dos Krenak frente à opressão territorial impulsiona movimentos contemporâneos de direitos indígenas, ambientais e sociais, reforçando a democracia e a pluralidade cultural no Brasil.",
+      icon: "M18 9a3 3 0 11-6 0 3 3 0 016 0zM6 9a3 3 0 11-6 0 3 3 0 016 0zm6 9a6 6 0 016-6h6a6 6 0 016 6v3H6v-3a6 6 0 016-6z"
     },
     {
-      area: "Farmacologia",
-      title: "Princípios Ativos",
-      description: "Muitos princípios ativos importantes foram descobertos a partir do conhecimento indígena sobre plantas, como a quinina (usada contra a malária), o jaborandi (usado em medicamentos para glaucoma) e a copaíba (com propriedades anti-inflamatórias).",
-      icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-    },
-    {
-      area: "Tecnologia",
-      title: "Inovações Práticas",
-      description: "Diversas tecnologias indígenas foram adaptadas para uso moderno, como canoas, redes de dormir, técnicas de cestaria e cerâmica. A borracha, usada pelos indígenas da Amazônia, tornou-se fundamental para a revolução industrial.",
-      icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+      area: "Educação e Transmissão de Saberes",
+      title: "Ensino pela Oralidade e Experiência",
+      description: "A educação tradicional Krenak, baseada na oralidade e na vivência direta com a natureza, inspira metodologias pedagógicas alternativas que valorizam a experiência, a criatividade e o respeito à diversidade cultural.",
+      icon: "M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"
     }
   ];
-
-  // Animation on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    const contributionItems = document.querySelectorAll('.contribution-item');
-    contributionItems.forEach(item => {
-      item.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
-      observer.observe(item);
-    });
-
-    return () => {
+  
+  // Animation on scroll + 3D effect
+    useEffect(() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+          }
+        });
+      }, { threshold: 0.1 });
+    
+      const contributionItems = document.querySelectorAll<HTMLDivElement>('.contribution-item');
+    
       contributionItems.forEach(item => {
-        observer.unobserve(item);
+        item.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
+        observer.observe(item);
+    
+        let currentX = 0;
+        let currentY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        let animationFrameId: number;
+    
+        const maxRotation = 15; // Máximo de rotação em graus para não exagerar
+    
+        const updateTransform = () => {
+          currentX += (targetX - currentX) * 0.1;
+          currentY += (targetY - currentY) * 0.1;
+          item.style.transform = `rotateX(${-currentY}deg) rotateY(${currentX}deg)`;
+          animationFrameId = requestAnimationFrame(updateTransform);
+        };
+    
+        const handleMouseMove = (e: MouseEvent) => {
+          const rect = item.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * maxRotation;
+          const rotateY = ((x - centerX) / centerX) * maxRotation;
+          targetX = rotateY;
+          targetY = rotateX;
+        };
+    
+        const handleMouseLeave = () => {
+          targetX = 0;
+          targetY = 0;
+        };
+    
+        item.addEventListener('mousemove', handleMouseMove);
+        item.addEventListener('mouseleave', handleMouseLeave);
+    
+        updateTransform(); // inicia animação contínua
+    
+        item.style.transition = 'transform 0.2s ease'; // transição suave ao parar
+    
+        // Cleanup
+        item.addEventListener('mouseleave', () => {
+          cancelAnimationFrame(animationFrameId);
+        });
       });
-    };
-  }, []);
+    
+      return () => {
+        contributionItems.forEach(item => {
+          observer.unobserve(item);
+        });
+      };
+    }, []);
+
+  
 
   return (
     <section id="contributions" className="py-24 bg-forest-50 dark:bg-forest-900 relative overflow-hidden">
@@ -81,22 +127,23 @@ const Contributions = () => {
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center gap-3 mb-12">
           <BookOpen className="h-8 w-8 text-forest-600 dark:text-forest-400" />
-          <h2 className="section-title">Contribuições para a Modernidade</h2>
+          <h2 className="section-title">Importância e Contribuição dos Krenak</h2>
         </div>
         
         <div className="max-w-5xl mx-auto">
           {/* Introduction */}
           <div className="glass-card p-6 mb-12">
             <p className="text-forest-700 dark:text-forest-300 leading-relaxed">
-              Os povos indígenas do Brasil desenvolveram ao longo dos séculos conhecimentos profundos sobre o meio ambiente, medicina natural, agricultura sustentável e tecnologias adaptadas ao seu modo de vida.
-              Muitas dessas contribuições foram absorvidas pela sociedade moderna e são fundamentais para diversos avanços científicos e tecnológicos atuais.
+              O povo Krenak, habitante das margens do Rio Doce, construiu uma rica história de resistência, saberes e espiritualidade.
+              Suas contribuições para a preservação ambiental, a valorização da diversidade cultural e a luta pelos direitos indígenas 
+              são um exemplo inspirador para todo o Brasil.
             </p>
           </div>
           
           {/* Contributions Grid */}
           <div ref={contributionsRef} className="grid md:grid-cols-2 gap-6">
             {contributions.map((item, index) => (
-              <div key={index} className="contribution-item glass-card p-6 hover-scale">
+              <div key={index} className="contribution-item glass-card p-6 transition-transform duration-300 ease-out hover:scale-105">
                 <div className="flex items-start space-x-4">
                   <div className="h-12 w-12 rounded-full bg-forest-100 dark:bg-forest-800 flex items-center justify-center flex-shrink-0">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-forest-600 dark:text-forest-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -121,12 +168,11 @@ const Contributions = () => {
           {/* Additional Info */}
           <div className="mt-12 indigenous-border p-6">
             <h3 className="text-center text-xl font-semibold text-forest-800 dark:text-forest-200 mb-4">
-              Reconhecimento e Propriedade Intelectual
+              Reconhecimento e Direitos Indígenas
             </h3>
             <p className="text-center text-forest-600 dark:text-forest-400">
-              É importante reconhecer que muitos dos conhecimentos tradicionais indígenas foram apropriados sem o devido crédito ou compensação. 
-              Atualmente, há um movimento crescente para proteger os direitos de propriedade intelectual dos povos originários e garantir que 
-              recebam o reconhecimento e benefícios justos por suas contribuições.
+              A história dos Krenak é também a história da luta pela demarcação de terras, pelo respeito à cultura e pela sobrevivência frente aos desafios modernos.
+              Honrar os saberes indígenas é construir um futuro mais justo e plural.
             </p>
           </div>
         </div>
