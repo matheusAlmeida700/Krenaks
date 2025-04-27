@@ -51,72 +51,91 @@ const Contributions = () => {
   ];
   
   // Animation on scroll + 3D effect
-    useEffect(() => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', 'translate-y-0');
-          }
-        });
-      }, { threshold: 0.1 });
-    
-      const contributionItems = document.querySelectorAll<HTMLDivElement>('.contribution-item');
-    
-      contributionItems.forEach(item => {
-        item.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
-        observer.observe(item);
-    
-        let currentX = 0;
-        let currentY = 0;
-        let targetX = 0;
-        let targetY = 0;
-        let animationFrameId: number;
-    
-        const maxRotation = 15; // Máximo de rotação em graus para não exagerar
-    
-        const updateTransform = () => {
-          currentX += (targetX - currentX) * 0.1;
-          currentY += (targetY - currentY) * 0.1;
-          item.style.transform = `rotateX(${-currentY}deg) rotateY(${currentX}deg)`;
-          animationFrameId = requestAnimationFrame(updateTransform);
-        };
-    
-        const handleMouseMove = (e: MouseEvent) => {
-          const rect = item.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * maxRotation;
-          const rotateY = ((x - centerX) / centerX) * maxRotation;
-          targetX = rotateY;
-          targetY = rotateX;
-        };
-    
-        const handleMouseLeave = () => {
-          targetX = 0;
-          targetY = 0;
-        };
-    
-        item.addEventListener('mousemove', handleMouseMove);
-        item.addEventListener('mouseleave', handleMouseLeave);
-    
-        updateTransform(); // inicia animação contínua
-    
-        item.style.transition = 'transform 0.2s ease'; // transição suave ao parar
-    
-        // Cleanup
-        item.addEventListener('mouseleave', () => {
-          cancelAnimationFrame(animationFrameId);
-        });
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+        }
       });
-    
-      return () => {
-        contributionItems.forEach(item => {
-          observer.unobserve(item);
-        });
+    }, { threshold: 0.1 });
+  
+    const contributionItems = document.querySelectorAll<HTMLDivElement>('.contribution-item');
+  
+    contributionItems.forEach(item => {
+      item.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'relative', 'overflow-hidden');
+  
+      const highlight = document.createElement('div');
+      highlight.style.position = 'absolute';
+      highlight.style.top = '0';
+      highlight.style.left = '0';
+      highlight.style.width = '100%';
+      highlight.style.height = '100%';
+      highlight.style.pointerEvents = 'none';
+      highlight.style.background = 'radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 60%)';
+      highlight.style.opacity = '0';
+      highlight.style.transition = 'opacity 0.3s ease, background-position 0.1s ease';
+      item.appendChild(highlight);
+  
+      let currentX = 0;
+      let currentY = 0;
+      let targetX = 0;
+      let targetY = 0;
+      let animationFrameId: number;
+  
+      const maxRotation = 15;
+  
+      const updateTransform = () => {
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
+        item.style.transform = `rotateX(${-currentY}deg) rotateY(${currentX}deg)`;
+        animationFrameId = requestAnimationFrame(updateTransform);
       };
-    }, []);
+  
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * maxRotation;
+        const rotateY = ((x - centerX) / centerX) * maxRotation;
+        targetX = rotateY;
+        targetY = rotateX;
+  
+        // Atualizar o brilho
+        const posX = (x / rect.width) * 100;
+        const posY = (y / rect.height) * 100;
+        highlight.style.background = `radial-gradient(circle at ${posX}% ${posY}%, rgba(255,255,255,0.2) 0%, transparent 60%)`;
+        highlight.style.opacity = '1';
+      };
+  
+      const handleMouseLeave = () => {
+        targetX = 0;
+        targetY = 0;
+        highlight.style.opacity = '0';
+      };
+  
+      item.addEventListener('mousemove', handleMouseMove);
+      item.addEventListener('mouseleave', handleMouseLeave);
+  
+      updateTransform(); // inicia animação contínua
+  
+      item.style.transition = 'transform 0.2s ease';
+  
+      // Cleanup
+      item.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(animationFrameId);
+      });
+    });
+  
+    return () => {
+      contributionItems.forEach(item => {
+        observer.unobserve(item);
+      });
+    };
+  }, []);
+  
 
   
 
