@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
+import Music from "../../assets/songs/KrenakMaxakaliPatax.mp3";
 
 const MusicPlayer = () => {
   const [volume, setVolume] = useState(0.5);
@@ -10,7 +11,7 @@ const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioRef.current = new Audio("../../assets/songs/KrenakMaxakaliPatax.mp3");
+    audioRef.current = new Audio(Music);
     audioRef.current.loop = true;
     audioRef.current.volume = volume;
 
