@@ -130,29 +130,6 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 text-forest-100">
-              Desenvolvedores
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <p className="text-forest-300">Isabelly Chirai</p>
-              </li>
-              <li>
-                <p className="text-forest-300">Gabriel Luís de Lima Ramos</p>
-              </li>
-              <li>
-                <p className="text-forest-300">Marco Antônio da Costa Silva</p>
-              </li>
-              <li>
-                <p className="text-forest-300">Matheus Almeida</p>
-              </li>
-              <li>
-                <p className="text-forest-300">Murilo Moreno Figuerôa Vieira</p>
-              </li>
-            </ul>
-          </div>
-
-          <div>
             <h3 className="text-xl font-bold mb-4 text-forest-100">Fontes</h3>
             <ul className="space-y-2">
               <li>
@@ -210,6 +187,62 @@ const Footer = () => {
                     Ministério Público de MG: Povo Krenak
                   </a>
                 </p>
+              </li>
+              <li>
+                <p className="text-forest-300">
+                  <a
+                    href="https://mapadeconflitos.ensp.fiocruz.br/conflito/mg-povo-indigena-krenak-segue-lutando-por-reconhecimento-e-demarcacao-total-de-seu-territorio-tradicional/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Fundação Oswaldo Cruz - Povo Indígena Krenak
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p className="text-forest-300">
+                  <a
+                    href="https://cimi.org.br/2021/10/povo-krenak-impactos-violacoes-ditadura-militar-justica/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    CIMI - Conselho Indigenista Missionário
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p className="text-forest-300">
+                  <a
+                    href="https://www.cantosdafloresta.com.br/povos/krenak/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Cantos da Floresta: Krenak
+                  </a>
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-forest-100">
+              Desenvolvedores
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <p className="text-forest-300">Isabelly Chirai</p>
+              </li>
+              <li>
+                <p className="text-forest-300">Gabriel Luís de Lima Ramos</p>
+              </li>
+              <li>
+                <p className="text-forest-300">Marco Antônio da Costa Silva</p>
+              </li>
+              <li>
+                <p className="text-forest-300">Matheus Almeida</p>
+              </li>
+              <li>
+                <p className="text-forest-300">Murilo Moreno Figuerôa Vieira</p>
               </li>
             </ul>
           </div>
